@@ -1,6 +1,6 @@
 # spotify
 
-[![Build Status](https://cloud.drone.io/api/badges/machippie/spotify/status.svg)](https://cloud.drone.io/machippie/google-chrome)
+[![Build Status](https://cloud.drone.io/api/badges/machippie/spotify/status.svg)](https://cloud.drone.io/machippie/spotify)
 
 Ansible role to configure spotify.
 
