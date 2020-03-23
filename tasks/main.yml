@@ -20,33 +20,12 @@
       tags:
         - spotify
 
-    - name: Remove quarantine flag
-      register: spotify_quarantine
-      failed_when: spotify_quarantine.rc != 0 and "No such xattr" not in spotify_quarantine.stderr
-      changed_when: spotify_quarantine.rc == 0
-      command: xattr -d com.apple.quarantine /Applications/Spotify.app
-      tags:
-        - spotify
-
-    - name: Install pidof package
-      homebrew:
-        name: pidof
-      tags:
-        - spotify
-
-    - name: Check program running
-      register: spotify_running
-      check_mode: False
-      failed_when: False
-      changed_when: spotify_running.stdout | length > 0 | bool
-      command: pidof Spotify
-      tags:
-        - spotify
-
-    - name: Fact program running
-      set_fact:
-        spotify_started: "{{ spotify_running.stdout_lines | length > 0 | bool }}"
-      tags:
-        - spotify
+- name: Remove quarantine flag
+  register: spotify_quarantine
+  failed_when: spotify_quarantine.rc != 0 and "No such xattr" not in spotify_quarantine.stderr
+  changed_when: spotify_quarantine.rc == 0
+  command: xattr -d com.apple.quarantine /Applications/Spotify.app
+  tags:
+    - spotify
 
 ...
